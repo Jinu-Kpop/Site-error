@@ -1,246 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Jinu’s World</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-    body { overflow:hidden; background: radial-gradient(circle at center, #001a33, #000814); color:#fff; }
-    .stars { position:fixed; width:100%; height:100%; z-index:-1; pointer-events:none; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jinu Kpop - Tech & KPDH Fan</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+  html, body { height: 100%; overflow: hidden; }
 
-    .star {
-      position:absolute;
-      background: #00cfff;
-      width:2px;
-      height:2px;
-      opacity:0.8;
-      border-radius:50%;
-      animation: moveStar linear infinite;
-    }
-    @keyframes moveStar {
-      from { transform: translateY(0) scale(1); opacity:1; }
-      to   { transform: translateY(100vh) scale(0.3); opacity:0; }
-    }
+  /* --- Background --- */
+  body {
+    background: radial-gradient(circle at top, #002244, #000814);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 
-    #welcome {
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      text-align:center;
-      background: linear-gradient(135deg, #001f4d, #003366);
-    }
-    #welcome h1 {
-      font-size:3.2rem;
-      color:#00e5ff;
-      text-shadow:0 0 30px #00e5ff;
-      animation: glow 2.5s infinite alternate;
-    }
-    @keyframes glow {
-      from { text-shadow:0 0 15px #00e5ff; }
-      to   { text-shadow:0 0 45px #00e5ff; }
-    }
-    #enter-btn {
-      margin-top:40px;
-      padding:15px 40px;
-      background:#00e5ff;
-      color:#001a33;
-      border:none;
-      border-radius:30px;
-      font-size:1.2rem;
-      cursor:pointer;
-      box-shadow:0 0 20px #00e5ff;
-      transition:transform 0.3s, background 0.3s;
-    }
-    #enter-btn:hover {
-      transform:scale(1.1);
-      background:#00b8d1;
-    }
+  /* --- Shooting stars --- */
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(45deg, white, transparent);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: shoot 3s linear infinite;
+  }
 
-    /* Main page */
-    #main {
-      display:none;
-      overflow-y:auto;
-      height:100vh;
-      padding:60px 20px 120px 20px;
-      text-align:center;
-      animation: fadeInPage 1s ease forwards;
-    }
-    @keyframes fadeInPage {
-      from { opacity:0; transform:translateY(30px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
+  @keyframes shoot {
+    0% { transform: translate(0,0) rotate(45deg) scale(1); opacity: 1; }
+    100% { transform: translate(100vw, 100vh) rotate(45deg) scale(0.5); opacity: 0; }
+  }
 
-    h2 {
-      font-size:2.4rem;
-      color:#00cfff;
-      margin-bottom:20px;
-      text-shadow:0 0 20px #00cfff;
-    }
+  /* --- Welcome Screen --- */
+  .welcome {
+    text-align: center;
+    animation: fadeIn 2s ease-in;
+  }
 
-    .imgur-embed-pub {
-      border-radius:50%;
-      overflow:hidden;
-      max-width:200px;
-      margin:0 auto 30px auto;
-      box-shadow:0 0 30px #00cfff;
-    }
+  .welcome h1 {
+    font-size: 3rem;
+    color: #61dafb;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+  }
 
-    .about {
-      max-width:800px;
-      margin:0 auto 30px;
-      font-size:1.1rem;
-      line-height:1.8;
-      color:#e0f7ff;
-      background: rgba(255,255,255,0.05);
-      padding:25px;
-      border-radius:20px;
-      box-shadow:0 0 25px rgba(0,207,255,0.3);
-      backdrop-filter: blur(8px);
-    }
+  .welcome button {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    background: #61dafb;
+    color: #001a33;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
 
-    .buttons {
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:15px;
-      margin-bottom:40px;
-    }
-    .btn {
-      background:#006b9c;
-      color:#fff;
-      padding:15px 30px;
-      border-radius:30px;
-      text-decoration:none;
-      font-weight:600;
-      transition:transform 0.3s, background 0.3s, box-shadow 0.3s;
-    }
-    .btn:hover {
-      background:#005075;
-      transform:scale(1.1);
-      box-shadow:0 0 15px #00cfff;
-    }
+  .welcome button:hover { transform: scale(1.1); }
 
-    audio {
-      margin-top:20px;
-      outline:none;
-      width:90%;
-      max-width:400px;
-      filter: drop-shadow(0 0 20px #00cfff);
-    }
+  /* --- Main Page --- */
+  .main {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    overflow-y: auto;
+    height: 100vh;
+  }
 
-    .visualizer {
-      margin:30px auto;
-      width:90%;
-      max-width:400px;
-      height:10px;
-      background:#00334d;
-      border-radius:10px;
-      overflow:hidden;
-      position:relative;
-    }
-    .bar {
-      position:absolute;
-      bottom:0;
-      width:4px;
-      height:0;
-      background:#00e5ff;
-      animation: bounce 1.5s infinite ease-in-out;
-    }
-    @keyframes bounce {
-      0%,100% { height:5px; }
-      50% { height:100%; }
-    }
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #61dafb;
+    margin: 20px 0;
+    box-shadow: 0 0 20px #61dafb;
+    animation: float 3s ease-in-out infinite;
+  }
 
-    footer {
-      margin-top:60px;
-      font-size:0.9rem;
-      color:#00cfff;
-    }
-  </style>
+  h2 { color: #61dafb; margin-bottom: 20px; }
+  .btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: #0055aa;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .btn:hover { background: #003f88; transform: scale(1.05); }
+
+  footer { margin-top: 30px; color: #61dafb; font-size: 0.9rem; }
+
+  /* --- Animations --- */
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+</style>
 </head>
 <body>
-  <div class="stars" id="stars"></div>
 
-  <section id="welcome">
-    <h1>🌌 Jump Into My World 🌌</h1>
-    <button id="enter-btn">Jump In</button>
-  </section>
+<!-- Shooting stars -->
+<script>
+  for (let i = 0; i < 10; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.top = Math.random() * window.innerHeight + "px";
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(star);
+  }
+</script>
 
-  <section id="main">
-    <h2>Hey, I’m Jinu!</h2>
-    <blockquote class="imgur-embed-pub" lang="en" data-id="a/sztJPpR" data-context="false">
-      <a href="//imgur.com/a/sztJPpR"></a>
-    </blockquote>
-    <script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<!-- Welcome Page -->
+<div class="welcome" id="welcome">
+  <h1>Welcome to Jinu Kpop 🌠</h1>
+  <button onclick="enterSite()">Click to Begin</button>
+</div>
 
-    <div class="about">
-      <p>Tech runs through my veins. Whenever there’s a new gadget, app, or breakthrough, I’m on it—testing, exploring, and geeking out like there’s no tomorrow. Technology isn’t just what I do; it’s how I see the world.</p>
-      <p>I’m friendly, positive, and open-minded, but here’s the deal: life’s too short for negativity, so I don’t have time for hate or toxic vibes. Keep it kind, or keep walking!</p>
-      <p>Big fan alert: I absolutely love KPDH (K-Pop Demon Hunter) from Sony Animation. Its energy, story, and style? Legendary. Oh, and my favorite color? Sky blue—calm, limitless, and inspiring, just like how I try to approach life.</p>
-      <p>Am I perfect? Nope. Like everyone, I stumble, learn, and grow every day. But that’s what makes life exciting—and keeps things real.</p>
-      <p>This space is where I share my tech obsessions, discoveries, and ideas—all served with a dash of positivity and curiosity. So stick around, explore, and let’s see what’s possible together!</p>
-    </div>
+<!-- Main Page -->
+<div class="main" id="main">
+  <img src="https://drive.google.com/uc?export=view&id=1dX7FOojzN9DNQDRycCBzriS6cw2JEMsM" alt="Profile" class="profile-photo">
+  <h2>Jinu Kpop — Tech Lover & KPDH Fanatic</h2>
+  
+  <div class="buttons">
+    <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord Community</a>
+    <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
+    <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi" target="_blank">Spotify</a>
+    <a class="btn" href="https://open.spotify.com/playlist/6NzQaVaofrf9kpRCx0sKkj" target="_blank">KPDH Popular Songs</a>
+    <a class="btn" href="https://open.spotify.com/playlist/6z81HIUuSRHymGh8D5lX1t" target="_blank">All KPDH Songs</a>
+  </div>
 
-    <div class="visualizer" id="visualizer"></div>
-    <audio id="bgMusic" loop>
-      <source src="https://drive.google.com/uc?export=download&id=1DIS3r7WgD9jRNtAnq9TgAco5AxvbzRc7" type="audio/mp3">
-      Your browser does not support audio.
-    </audio>
+  <footer>Discord: <strong>jinu_kpop</strong></footer>
+</div>
 
-    <div class="buttons">
-      <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord: IDK Community</a>
-      <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
-      <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi?si=a4c07eab4856416d" target="_blank">Spotify Profile</a>
-      <a class="btn" href="https://open.spotify.com/playlist/6NzQaVaofrf9kpRCx0sKkj?si=82f9aaec729b46f0" target="_blank">KPDH Popular Songs</a>
-      <a class="btn" href="https://open.spotify.com/playlist/6z81HIUuSRHymGh8D5lX1t?si=e81c056c630741e1" target="_blank">All KPDH Songs</a>
-    </div>
+<!-- Music -->
+<audio id="bgMusic" loop>
+  <source src="https://docs.google.com/uc?export=download&id=1DIS3r7WgD9jRNtAnq9TgAco5AxvbzRc7" type="audio/mp3">
+</audio>
 
-    <footer>Connect with me: <strong>Discord: jinu_kpop</strong></footer>
-  </section>
-
-  <script>
-    // Generate stars
-    const starsContainer = document.getElementById('stars');
-    for (let i = 0; i < 120; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      star.style.left = Math.random()*100 + 'vw';
-      star.style.top = Math.random()*-100 + 'vh';
-      star.style.animationDelay = Math.random()*5 + 's';
-      star.style.animationDuration = 4 + Math.random()*6 + 's';
-      starsContainer.appendChild(star);
-    }
-
-    // Enter button logic
-    const btn = document.getElementById('enter-btn');
-    const welcome = document.getElementById('welcome');
-    const main = document.getElementById('main');
-    const music = document.getElementById('bgMusic');
-    const viz = document.getElementById('visualizer');
-
-    btn.addEventListener('click', () => {
-      welcome.style.display = 'none';
-      main.style.display = 'block';
-      document.body.style.overflow = 'auto';
-      music.play().catch(e => console.log('Autoplay prevented'));
-      createBars();
-    });
-
-    // Visualiser bars
-    function createBars(){
-      for(let i=0;i<50;i++){
-        const bar = document.createElement('div');
-        bar.className = 'bar';
-        bar.style.left = (i * (100/50)) + '%';
-        bar.style.animationDelay = (i * 0.05) + 's';
-        viz.appendChild(bar);
-      }
-    }
-  </script>
+<script>
+function enterSite() {
+  document.getElementById('welcome').style.display = 'none';
+  document.getElementById('main').style.display = 'block';
+  document.body.style.overflow = 'auto';
+  const music = document.getElementById('bgMusic');
+  music.play().catch(() => {
+    alert("Click again to enable music autoplay 🎵");
+  });
+}
+</script>
 
 </body>
 </html>
