@@ -6,44 +6,143 @@
   <title>Jinu Kpop - Tech & KPDH Fan</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* --- Basic Reset --- */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-    body { background: linear-gradient(135deg, #87CEEB, #E0FFFF); color: #333; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
-    
-    /* --- Container --- */
-    .container { text-align: center; max-width: 800px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); backdrop-filter: blur(10px); animation: fadeIn 2s ease-in; }
-    
-    /* --- Title --- */
-    h1 { font-size: 3rem; margin-bottom: 10px; color: #003366; animation: slideDown 1s ease-out; }
-    h2 { font-size: 1.5rem; margin-bottom: 30px; color: #0055AA; animation: fadeIn 2s ease-in; }
+    body { 
+      background: linear-gradient(135deg, #87CEEB, #E0FFFF);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 40px;
+    }
 
-    /* --- Buttons --- */
+    .container {
+      text-align: center;
+      max-width: 850px;
+      padding: 30px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      backdrop-filter: blur(15px);
+      animation: fadeIn 2s ease-in;
+    }
+
+    h1 { font-size: 3rem; color: #003366; margin-bottom: 10px; }
+    h2 { font-size: 1.5rem; color: #0055AA; margin-bottom: 25px; }
+
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #87CEEB;
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(135,206,235,0.6);
+    }
+
+    .about {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #003366;
+      background: rgba(255,255,255,0.3);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
     .buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-    .btn { padding: 15px 25px; font-size: 1rem; font-weight: 600; color: white; background: #0077CC; border: none; border-radius: 50px; cursor: pointer; text-decoration: none; transition: 0.3s; position: relative; overflow: hidden; }
+    .btn {
+      padding: 15px 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background: #0077CC;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
     .btn:hover { background: #0055AA; transform: scale(1.05); }
-    .btn::after { content: ''; position: absolute; width: 100%; height: 100%; top: 0; left: -100%; background: rgba(255,255,255,0.2); transition: 0.4s; }
+    .btn::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: -100%;
+      background: rgba(255,255,255,0.2);
+      transition: 0.4s;
+    }
     .btn:hover::after { left: 0; }
 
-    /* --- Animations --- */
-    @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-    @keyframes slideDown { 0% { transform: translateY(-50px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+    footer { margin-top: 40px; font-size: 0.9rem; color: #003366; }
 
-    /* --- Footer --- */
-    footer { margin-top: 40px; font-size: 0.9rem; color: #003366; animation: fadeIn 3s ease-in; }
-    
-    /* --- Floating Animation --- */
-    .floating { animation: float 3s ease-in-out infinite; }
-    @keyframes float {
-      0%,100% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
+    /* Custom Audio Player */
+    .audio-player {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0 40px 0;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50px;
+      padding: 10px 20px;
+      box-shadow: 0 0 20px rgba(0,85,170,0.3);
     }
+
+    .audio-player button {
+      background: #0077CC;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .audio-player button:hover { background: #0055AA; transform: scale(1.1); }
+
+    .audio-player input[type="range"] {
+      width: 150px;
+      accent-color: #0077CC;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   </style>
 </head>
 <body>
-  <div class="container floating">
+  <div class="container">
+    <img src="profile.jpg" alt="Jinu Profile" class="profile-photo">
     <h1>Jinu Kpop</h1>
     <h2>Tech Lover & KPDH Fanatic</h2>
-    
+
+    <div class="about">
+      <p><strong>Hey, I’m Jinu!</strong></p>
+      <p>Tech runs through my veins. Whenever there’s a new gadget, app, or breakthrough, I’m on it—testing, exploring, and geeking out like there’s no tomorrow. Technology isn’t just what I do; it’s how I see the world.</p>
+      <p>I’m friendly, positive, and open-minded, but here’s the deal: life’s too short for negativity, so I don’t have time for hate or toxic vibes. Keep it kind, or keep walking!</p>
+      <p>Big fan alert: I absolutely love <strong>KPDH (K-Pop Demon Hunter)</strong> from Sony Animation. Its energy, story, and style? Legendary. Oh, and my favorite color? Sky blue—calm, limitless, and inspiring, just like how I try to approach life.</p>
+      <p>Am I perfect? Nope. Like everyone, I stumble, learn, and grow every day. But that’s what makes life exciting—and keeps things real.</p>
+      <p>This space is where I share my tech obsessions, discoveries, and ideas—all served with a dash of positivity and curiosity. So stick around, explore, and let’s see what’s possible together!</p>
+    </div>
+
+    <!-- Custom Audio Player -->
+    <div class="audio-player">
+      <button id="playPauseBtn">▶</button>
+      <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
+      <audio id="bgMusic" loop>
+        <!-- Replace FILE_ID below with your actual file’s ID -->
+        <source src="https://drive.google.com/file/d/1DIS3r7WgD9jRNtAnq9TgAco5AxvbzRc7/view?usp=drive_link" type="audio/mp3">
+      </audio>
+    </div>
+
     <div class="buttons">
       <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord: IDK Community</a>
       <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
@@ -55,20 +154,23 @@
     <footer>Connect with me: <strong>Discord: jinu_kpop</strong></footer>
   </div>
 
-  <!-- Optional JS for fancy effects -->
   <script>
-    // Floating buttons animation (random small movement)
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(btn => {
-      btn.addEventListener('mousemove', e => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        btn.style.transform = `translate(${(x - rect.width/2)/20}px, ${(y - rect.height/2)/20}px) scale(1.05)`;
-      });
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transform = 'translate(0,0) scale(1)';
-      });
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    const volumeControl = document.getElementById('volumeControl');
+
+    playPauseBtn.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        playPauseBtn.textContent = '⏸';
+      } else {
+        bgMusic.pause();
+        playPauseBtn.textContent = '▶';
+      }
+    });
+
+    volumeControl.addEventListener('input', () => {
+      bgMusic.volume = volumeControl.value;
     });
   </script>
 </body>
