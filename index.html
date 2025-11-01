@@ -1,177 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jinu Kpop - Tech & KPDH Fan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-
-    body {
-      background: linear-gradient(135deg, #6ec1ff, #e0f7ff);
-      color: #003366;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      transition: background 2s;
-    }
-
-    /* Welcome Page */
-    #welcome {
-      text-align: center;
-      animation: fadeIn 2s ease-in;
-    }
-    #welcome h1 {
-      font-size: 3rem;
-      color: #003366;
-      margin-bottom: 20px;
-      animation: floatText 3s ease-in-out infinite;
-    }
-    #welcome button {
-      padding: 15px 40px;
-      border: none;
-      border-radius: 50px;
-      background: #0077cc;
-      color: white;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
-      box-shadow: 0 0 20px rgba(0, 119, 204, 0.5);
-    }
-    #welcome button:hover {
-      background: #0055aa;
-      transform: scale(1.1);
-    }
-
-    /* Main Container */
-    .container {
-      text-align: center;
-      max-width: 850px;
-      padding: 20px 30px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(12px);
-      display: none;
-      overflow-y: auto;
-      height: 90vh;
-      animation: fadeIn 1.5s ease-in forwards;
-    }
-
-    /* Profile Photo */
-    .profile {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 4px solid #0077cc;
-      margin: 15px auto;
-      display: block;
-      box-shadow: 0 0 25px #0099ff;
-      animation: floatImage 3s ease-in-out infinite;
-    }
-
-    h1 { font-size: 2.5rem; color: #002b5c; margin: 10px 0; animation: slideDown 1s ease-out; }
-    h2 { font-size: 1.4rem; color: #0055aa; margin-bottom: 15px; animation: fadeIn 2s ease-in; }
-
-    /* About Me Section */
-    .about {
-      font-size: 1rem;
-      line-height: 1.7;
-      text-align: justify;
-      margin: 25px 0;
-      color: #002b5c;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 15px;
-      padding: 15px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      animation: fadeInUp 2s ease-in;
-    }
-
-    /* Buttons */
-    .buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-    .btn {
-      padding: 15px 25px;
-      font-size: 1rem;
-      font-weight: 600;
-      color: white;
-      background: #0077cc;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn:hover { background: #0055aa; transform: scale(1.05); }
-
-    footer {
-      margin-top: 20px;
-      font-size: 0.9rem;
-      color: #003366;
-      animation: fadeIn 3s ease-in;
-    }
-
-    /* Animations */
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes slideDown { from { transform: translateY(-40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    @keyframes floatText { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    @keyframes floatImage { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-    @keyframes fadeInUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome | Jinu Kpop</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Welcome Page -->
-  <div id="welcome">
-    <h1>Welcome to Jinu Kpop 🌌</h1>
-    <button onclick="enterSite()">Enter</button>
+  <!-- Welcome Screen -->
+  <div id="welcome-screen" class="screen active">
+    <div class="welcome-text">
+      <h1 class="fade-in">Welcome to Jinu’s World</h1>
+      <button id="enter-btn" class="btn">Enter</button>
+    </div>
   </div>
 
   <!-- Main Content -->
-  <div class="container" id="main">
-    <img src="https://drive.google.com/uc?export=view&id=1dX7FOojzN9DNQDRycCBzriS6cw2JEMsM" alt="Profile Photo" class="profile">
-    <h1>Jinu Kpop</h1>
-    <h2>Tech Lover & KPDH Fanatic</h2>
+  <div id="main-content" class="screen">
+    <div class="stars"></div>
+    <div class="container">
+      <img src="assets/pfp.png" alt="Profile" class="profile-photo" />
+      <h1>Hey, I’m Jinu!</h1>
+      <p class="about">
+        Tech runs through my veins. Whenever there’s a new gadget, app, or breakthrough,
+        I’m on it—testing, exploring, and geeking out like there’s no tomorrow.
+        Technology isn’t just what I do; it’s how I see the world.
+      </p>
+      <p class="about">
+        I’m friendly, positive, and open-minded, but here’s the deal: life’s too short
+        for negativity, so I don’t have time for hate or toxic vibes. Keep it kind,
+        or keep walking!
+      </p>
+      <p class="about">
+        Big fan alert: I absolutely love <strong>KPDH (K-Pop Demon Hunter)</strong> from Sony Animation.
+        Its energy, story, and style? Legendary. My favorite color? Sky blue—calm,
+        limitless, and inspiring.
+      </p>
+      <p class="about">
+        Am I perfect? Nope. Like everyone, I stumble, learn, and grow every day.
+        But that’s what makes life exciting—and keeps things real.
+      </p>
+      <p class="about">
+        This space is where I share my tech obsessions, discoveries, and ideas—all
+        served with a dash of positivity and curiosity. So stick around, explore,
+        and let’s see what’s possible together!
+      </p>
 
-    <div class="about">
-      <p><strong>Hey, I’m Jinu!</strong></p>
-      <p>Tech runs through my veins. Whenever there’s a new gadget, app, or breakthrough, I’m on it—testing, exploring, and geeking out like there’s no tomorrow. Technology isn’t just what I do; it’s how I see the world.</p>
-      <p>I’m friendly, positive, and open-minded, but here’s the deal: life’s too short for negativity, so I don’t have time for hate or toxic vibes. Keep it kind, or keep walking!</p>
-      <p>Big fan alert: I absolutely love <strong>KPDH (K-Pop Demon Hunter)</strong> from Sony Animation. Its energy, story, and style? Legendary. Oh, and my favorite color? Sky blue—calm, limitless, and inspiring, just like how I try to approach life.</p>
-      <p>Am I perfect? Nope. Like everyone, I stumble, learn, and grow every day. But that’s what makes life exciting—and keeps things real.</p>
-      <p>This space is where I share my tech obsessions, discoveries, and ideas—all served with a dash of positivity and curiosity. So stick around, explore, and let’s see what’s possible together!</p>
+      <div class="buttons">
+        <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord</a>
+        <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
+        <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi" target="_blank">Spotify</a>
+      </div>
     </div>
-
-    <div class="buttons">
-      <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord Community</a>
-      <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
-      <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi" target="_blank">Spotify</a>
-      <a class="btn" href="https://open.spotify.com/playlist/6NzQaVaofrf9kpRCx0sKkj" target="_blank">KPDH Popular Songs</a>
-    </div>
-
-    <footer>Discord: <strong>jinu_kpop</strong></footer>
   </div>
 
-  <!-- Music -->
-  <audio id="bgMusic" loop>
-    <source src="https://docs.google.com/uc?export=download&id=1DIS3r7WgD9jRNtAnq9TgAco5AxvbzRc7" type="audio/mp3">
-  </audio>
-
-  <script>
-    function enterSite() {
-      document.getElementById('welcome').style.display = 'none';
-      document.getElementById('main').style.display = 'block';
-      document.body.style.background = 'linear-gradient(135deg, #a7e0ff, #0077cc)';
-      document.body.style.overflow = 'auto';
-      const music = document.getElementById('bgMusic');
-      music.play().catch(() => alert("Click again to enable music 🎵"));
-    }
-  </script>
-
+  <audio id="bg-music" loop></audio>
+  <script src="script.js"></script>
 </body>
 </html>
