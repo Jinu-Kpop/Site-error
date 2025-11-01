@@ -1,159 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jinu Kpop - Tech & KPDH Fan</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-  html, body { height: 100%; overflow: hidden; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jinu Kpop - Tech & KPDH Fan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
 
-  /* --- Background --- */
-  body {
-    background: radial-gradient(circle at top, #002244, #000814);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+    body {
+      background: linear-gradient(135deg, #6ec1ff, #e0f7ff);
+      color: #003366;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      transition: background 2s;
+    }
 
-  /* --- Shooting stars --- */
-  .star {
-    position: absolute;
-    width: 2px;
-    height: 100px;
-    background: linear-gradient(45deg, white, transparent);
-    border-radius: 50%;
-    opacity: 0.8;
-    animation: shoot 3s linear infinite;
-  }
+    /* Welcome Page */
+    #welcome {
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+    }
+    #welcome h1 {
+      font-size: 3rem;
+      color: #003366;
+      margin-bottom: 20px;
+      animation: floatText 3s ease-in-out infinite;
+    }
+    #welcome button {
+      padding: 15px 40px;
+      border: none;
+      border-radius: 50px;
+      background: #0077cc;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+      box-shadow: 0 0 20px rgba(0, 119, 204, 0.5);
+    }
+    #welcome button:hover {
+      background: #0055aa;
+      transform: scale(1.1);
+    }
 
-  @keyframes shoot {
-    0% { transform: translate(0,0) rotate(45deg) scale(1); opacity: 1; }
-    100% { transform: translate(100vw, 100vh) rotate(45deg) scale(0.5); opacity: 0; }
-  }
+    /* Main Container */
+    .container {
+      text-align: center;
+      max-width: 850px;
+      padding: 20px 30px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(12px);
+      display: none;
+      overflow-y: auto;
+      height: 90vh;
+      animation: fadeIn 1.5s ease-in forwards;
+    }
 
-  /* --- Welcome Screen --- */
-  .welcome {
-    text-align: center;
-    animation: fadeIn 2s ease-in;
-  }
+    /* Profile Photo */
+    .profile {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid #0077cc;
+      margin: 15px auto;
+      display: block;
+      box-shadow: 0 0 25px #0099ff;
+      animation: floatImage 3s ease-in-out infinite;
+    }
 
-  .welcome h1 {
-    font-size: 3rem;
-    color: #61dafb;
-    margin-bottom: 20px;
-    animation: pulse 2s infinite;
-  }
+    h1 { font-size: 2.5rem; color: #002b5c; margin: 10px 0; animation: slideDown 1s ease-out; }
+    h2 { font-size: 1.4rem; color: #0055aa; margin-bottom: 15px; animation: fadeIn 2s ease-in; }
 
-  .welcome button {
-    padding: 15px 40px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.2rem;
-    background: #61dafb;
-    color: #001a33;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
+    /* About Me Section */
+    .about {
+      font-size: 1rem;
+      line-height: 1.7;
+      text-align: justify;
+      margin: 25px 0;
+      color: #002b5c;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 2s ease-in;
+    }
 
-  .welcome button:hover { transform: scale(1.1); }
+    /* Buttons */
+    .buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .btn {
+      padding: 15px 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background: #0077cc;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn:hover { background: #0055aa; transform: scale(1.05); }
 
-  /* --- Main Page --- */
-  .main {
-    display: none;
-    text-align: center;
-    padding: 40px;
-    overflow-y: auto;
-    height: 100vh;
-  }
+    footer {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #003366;
+      animation: fadeIn 3s ease-in;
+    }
 
-  .profile-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 4px solid #61dafb;
-    margin: 20px 0;
-    box-shadow: 0 0 20px #61dafb;
-    animation: float 3s ease-in-out infinite;
-  }
+    /* Animations */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideDown { from { transform: translateY(-40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes floatText { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes floatImage { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    @keyframes fadeInUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-  h2 { color: #61dafb; margin-bottom: 20px; }
-  .btn {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 25px;
-    border-radius: 30px;
-    background: #0055aa;
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-  .btn:hover { background: #003f88; transform: scale(1.05); }
-
-  footer { margin-top: 30px; color: #61dafb; font-size: 0.9rem; }
-
-  /* --- Animations --- */
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-</style>
+  </style>
 </head>
 <body>
 
-<!-- Shooting stars -->
-<script>
-  for (let i = 0; i < 10; i++) {
-    const star = document.createElement("div");
-    star.className = "star";
-    star.style.top = Math.random() * window.innerHeight + "px";
-    star.style.left = Math.random() * window.innerWidth + "px";
-    star.style.animationDelay = Math.random() * 5 + "s";
-    document.body.appendChild(star);
-  }
-</script>
-
-<!-- Welcome Page -->
-<div class="welcome" id="welcome">
-  <h1>Welcome to Jinu Kpop 🌠</h1>
-  <button onclick="enterSite()">Click to Begin</button>
-</div>
-
-<!-- Main Page -->
-<div class="main" id="main">
-  <img src="https://drive.google.com/uc?export=view&id=1dX7FOojzN9DNQDRycCBzriS6cw2JEMsM" alt="Profile" class="profile-photo">
-  <h2>Jinu Kpop — Tech Lover & KPDH Fanatic</h2>
-  
-  <div class="buttons">
-    <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord Community</a>
-    <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
-    <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi" target="_blank">Spotify</a>
-    <a class="btn" href="https://open.spotify.com/playlist/6NzQaVaofrf9kpRCx0sKkj" target="_blank">KPDH Popular Songs</a>
-    <a class="btn" href="https://open.spotify.com/playlist/6z81HIUuSRHymGh8D5lX1t" target="_blank">All KPDH Songs</a>
+  <!-- Welcome Page -->
+  <div id="welcome">
+    <h1>Welcome to Jinu Kpop 🌌</h1>
+    <button onclick="enterSite()">Enter</button>
   </div>
 
-  <footer>Discord: <strong>jinu_kpop</strong></footer>
-</div>
+  <!-- Main Content -->
+  <div class="container" id="main">
+    <img src="https://drive.google.com/uc?export=view&id=1dX7FOojzN9DNQDRycCBzriS6cw2JEMsM" alt="Profile Photo" class="profile">
+    <h1>Jinu Kpop</h1>
+    <h2>Tech Lover & KPDH Fanatic</h2>
 
-<!-- Music -->
-<audio id="bgMusic" loop>
-  <source src="https://docs.google.com/uc?export=download&id=1DIS3r7WgD9jRNtAnq9TgAco5AxvbzRc7" type="audio/mp3">
-</audio>
+    <div class="about">
+      <p><strong>Hey, I’m Jinu!</strong></p>
+      <p>Tech runs through my veins. Whenever there’s a new gadget, app, or breakthrough, I’m on it—testing, exploring, and geeking out like there’s no tomorrow. Technology isn’t just what I do; it’s how I see the world.</p>
+      <p>I’m friendly, positive, and open-minded, but here’s the deal: life’s too short for negativity, so I don’t have time for hate or toxic vibes. Keep it kind, or keep walking!</p>
+      <p>Big fan alert: I absolutely love <strong>KPDH (K-Pop Demon Hunter)</strong> from Sony Animation. Its energy, story, and style? Legendary. Oh, and my favorite color? Sky blue—calm, limitless, and inspiring, just like how I try to approach life.</p>
+      <p>Am I perfect? Nope. Like everyone, I stumble, learn, and grow every day. But that’s what makes life exciting—and keeps things real.</p>
+      <p>This space is where I share my tech obsessions, discoveries, and ideas—all served with a dash of positivity and curiosity. So stick around, explore, and let’s see what’s possible together!</p>
+    </div>
 
-<script>
-function enterSite() {
-  document.getElementById('welcome').style.display = 'none';
-  document.getElementById('main').style.display = 'block';
-  document.body.style.overflow = 'auto';
-  const music = document.getElementById('bgMusic');
-  music.play().catch(() => {
-    alert("Click again to enable music autoplay 🎵");
-  });
-}
-</script>
+    <div class="buttons">
+      <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord Community</a>
+      <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
+      <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi" target="_blank">Spotify</a>
+      <a class="btn" href="https://open.spotify.com/playlist/6NzQaVaofrf9kpRCx0sKkj" target="_blank">KPDH Popular Songs</a>
+    </div>
+
+    <footer>Discord: <strong>jinu_kpop</strong></footer>
+  </div>
+
+  <!-- Music -->
+  <audio id="bgMusic" loop>
+    <source src="https://docs.google.com/uc?export=download&id=1DIS3r7WgD9jRNtAnq9TgAco5AxvbzRc7" type="audio/mp3">
+  </audio>
+
+  <script>
+    function enterSite() {
+      document.getElementById('welcome').style.display = 'none';
+      document.getElementById('main').style.display = 'block';
+      document.body.style.background = 'linear-gradient(135deg, #a7e0ff, #0077cc)';
+      document.body.style.overflow = 'auto';
+      const music = document.getElementById('bgMusic');
+      music.play().catch(() => alert("Click again to enable music 🎵"));
+    }
+  </script>
 
 </body>
 </html>
