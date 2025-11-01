@@ -3,99 +3,162 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jinu Kpop - Tech & KPDH Fan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Jump In 🎵</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-    body { background: linear-gradient(135deg, #87CEEB, #E0FFFF); color: #333; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow-y: auto; padding: 40px; }
-    .container { text-align: center; max-width: 850px; padding: 30px; background: rgba(255,255,255,0.15); border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); backdrop-filter: blur(15px); animation: fadeIn 2s ease-in; }
-    h1 { font-size: 3rem; color: #003366; margin-bottom: 10px; }
-    h2 { font-size: 1.5rem; color: #0055AA; margin-bottom: 25px; }
-    .profile-photo { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid #87CEEB; margin-bottom: 20px; box-shadow: 0 0 25px rgba(135,206,235,0.6); }
-    .about { font-size: 1.05rem; line-height: 1.7; color: #003366; background: rgba(255,255,255,0.3); border-radius: 15px; padding: 20px; margin-bottom: 30px; text-align: left; }
-    .buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-    .btn { padding: 15px 25px; font-size: 1rem; font-weight: 600; color: white; background: #0077CC; border: none; border-radius: 50px; cursor: pointer; text-decoration: none; transition: 0.3s; position: relative; overflow: hidden; }
-    .btn:hover { background: #0055AA; transform: scale(1.05); }
-    .btn::after { content: ''; position: absolute; width: 100%; height: 100%; top: 0; left: -100%; background: rgba(255,255,255,0.2); transition: 0.4s; }
-    .btn:hover::after { left: 0; }
-    footer { margin-top: 40px; font-size: 0.9rem; color: #003366; }
-    .audio-player { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 20px 0 40px 0; background: rgba(255,255,255,0.2); border-radius: 50px; padding: 10px 20px; box-shadow: 0 0 20px rgba(0,85,170,0.3); }
-    .audio-player button { background: #0077CC; border: none; border-radius: 50%; width: 50px; height: 50px; color: white; font-size: 22px; cursor: pointer; transition: 0.3s; }
-    .audio-player button:hover { background: #0055AA; transform: scale(1.1); }
-    .audio-player input[type="range"] { width: 150px; accent-color: #0077CC; cursor: pointer; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      overflow: hidden;
+      height: 100vh;
+      background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+      color: white;
+    }
+
+    /* --- Animated Star Background --- */
+    .stars {
+      width: 2px;
+      height: 2px;
+      background: white;
+      box-shadow: 
+        100px 200px white, 200px 100px white, 300px 300px white, 400px 50px white,
+        500px 400px white, 600px 200px white, 700px 100px white, 800px 300px white,
+        900px 500px white, 1000px 50px white, 1100px 400px white;
+      animation: animStar 50s linear infinite;
+    }
+
+    @keyframes animStar {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-1000px); }
+    }
+
+    /* --- Welcome Page --- */
+    .welcome {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      z-index: 10;
+      transition: opacity 1s ease;
+    }
+
+    .welcome h1 {
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 0 0 15px #00ffff;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ffff; }
+      to { text-shadow: 0 0 25px #00ccff; }
+    }
+
+    .enter-btn {
+      margin-top: 30px;
+      padding: 12px 30px;
+      background: linear-gradient(90deg, #00ffff, #0077ff);
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .enter-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #00ffff;
+    }
+
+    /* --- Main Page --- */
+    .main {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 1s ease;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .show {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+    }
+
+    .profile {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #00ffff;
+      box-shadow: 0 0 30px #00ffff;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    h2 {
+      margin-top: 20px;
+      font-size: 2rem;
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    audio {
+      margin-top: 30px;
+      width: 300px;
+      outline: none;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ffff;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="profile.jpg" alt="Jinu Profile" class="profile-photo">
-    <h1>Jinu Kpop</h1>
-    <h2>Tech Lover & KPDH Fanatic</h2>
+  <div class="stars"></div>
 
-    <div class="about">
-      <p><strong>Hey, I’m Jinu!</strong></p>
-      <p>Tech runs through my veins. Whenever there’s a new gadget, app, or breakthrough, I’m on it—testing, exploring, and geeking out like there’s no tomorrow. Technology isn’t just what I do; it’s how I see the world.</p>
-      <p>I’m friendly, positive, and open-minded, but here’s the deal: life’s too short for negativity, so I don’t have time for hate or toxic vibes. Keep it kind, or keep walking!</p>
-      <p>Big fan alert: I absolutely love <strong>KPDH (K-Pop Demon Hunter)</strong> from Sony Animation. Its energy, story, and style? Legendary. Oh, and my favorite color? Sky blue—calm, limitless, and inspiring, just like how I try to approach life.</p>
-      <p>Am I perfect? Nope. Like everyone, I stumble, learn, and grow every day. But that’s what makes life exciting—and keeps things real.</p>
-      <p>This space is where I share my tech obsessions, discoveries, and ideas—all served with a dash of positivity and curiosity. So stick around, explore, and let’s see what’s possible together!</p>
-    </div>
+  <!-- Welcome Page -->
+  <div class="welcome" id="welcome">
+    <h1>Welcome, Traveler ✨</h1>
+    <button class="enter-btn" onclick="enterSite()">Click to Jump In</button>
+  </div>
 
-    <!-- Custom Audio Player -->
-    <div class="audio-player">
-      <button id="playPauseBtn">▶</button>
-      <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.6">
-      <audio id="bgMusic" preload="auto"></audio>
-    </div>
-
-    <div class="buttons">
-      <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord: IDK Community</a>
-      <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
-      <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi?si=a4c07eab4856416d" target="_blank">Spotify Profile</a>
-      <a class="btn" href="https://open.spotify.com/playlist/6NzQaVaofrf9kpRCx0sKkj?si=82f9aaec729b46f0" target="_blank">KPDH Popular Songs</a>
-      <a class="btn" href="https://open.spotify.com/playlist/6z81HIUuSRHymGh8D5lX1t?si=e81c056c630741e1" target="_blank">All KPDH Songs</a>
-    </div>
-
-    <footer>Connect with me: <strong>Discord: jinu_kpop</strong></footer>
+  <!-- Main Player Page -->
+  <div class="main" id="main">
+    <img src="https://i.imgur.com/sztJPpR.png" alt="Profile" class="profile">
+    <h2>Now Playing 🎶</h2>
+    <audio id="music" controls autoplay loop>
+      <source src="https://drive.google.com/uc?export=download&id=1DIS3r7WgD9jRNtAnq9TgAco5AxvbzRc7" type="audio/mp3">
+      Your browser does not support audio.
+    </audio>
   </div>
 
   <script>
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    const bgMusic = document.getElementById('bgMusic');
-    const volumeControl = document.getElementById('volumeControl');
+    const welcome = document.getElementById('welcome');
+    const main = document.getElementById('main');
+    const music = document.getElementById('music');
 
-    // ✅ Paste multiple Google Drive file IDs here
-    const songs = [
-      "1DIS3r7WgD9jRNtAnq9TgAco5AxvbzRc7", // replace with your file IDs
-    ];
-    let current = 0;
-
-    function playNext() {
-      current = (current + 1) % songs.length;
-      bgMusic.src = `https://docs.google.com/uc?export=download&id=${songs[current]}`;
-      bgMusic.play().catch(()=>{});
+    function enterSite() {
+      welcome.style.opacity = 0;
+      setTimeout(() => {
+        welcome.style.display = 'none';
+        main.classList.add('show');
+        music.play();
+      }, 1000);
     }
-
-    bgMusic.addEventListener('ended', playNext);
-    volumeControl.addEventListener('input', () => bgMusic.volume = volumeControl.value);
-
-    playPauseBtn.addEventListener('click', () => {
-      if (bgMusic.paused) {
-        bgMusic.play();
-        playPauseBtn.textContent = '⏸';
-      } else {
-        bgMusic.pause();
-        playPauseBtn.textContent = '▶';
-      }
-    });
-
-    // Enable autoplay after user interacts once
-    document.body.addEventListener('click', () => {
-      if (!bgMusic.src) {
-        bgMusic.src = `https://docs.google.com/uc?export=download&id=${songs[current]}`;
-      }
-      bgMusic.play().then(() => playPauseBtn.textContent = '⏸').catch(()=>{});
-    }, { once: true });
   </script>
 </body>
 </html>
